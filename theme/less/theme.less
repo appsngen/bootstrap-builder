@@ -1,0 +1,31 @@
+//
+// Buttons
+// --------------------------------------------------
+
+// Common styles
+.btn-default,
+.btn-primary,
+.btn-success,
+.btn-info,
+.btn-warning,
+.btn-danger {
+
+}
+
+// Common styles
+.btn {
+  // Remove the gradient for the pressed/active state
+  &:active,
+  &.active {
+    background-image: none;
+  }
+}
+
+// Apply the mixin to the buttons
+.btn-default { background: @btn-default-bg; border-color: @btn-default-border; color: @btn-default-color; &:hover{background: @btn-default-hover-bg; border-color: @btn-default-hover-border; color: @btn-default-hover-color;} }
+.btn-primary { background: @btn-primary-bg; border-color: @btn-primary-border; color: @btn-primary-color; &:hover{background: @btn-primary-hover-bg; border-color: @btn-primary-hover-border; color: @btn-primary-hover-color;} }
+.btn-success { background: @btn-success-bg; border-color: @btn-success-border; color: @btn-success-color; &:hover{background: @btn-success-hover-bg; border-color: @btn-success-hover-border; color: @btn-success-hover-color;} }
+.btn-warning { background: @btn-warning-bg; border-color: @btn-warning-border; color: @btn-warning-color; &:hover{background: @btn-warning-hover-bg; border-color: @btn-warning-hover-border; color: @btn-warning-hover-color;} }
+.btn-danger  { background: @btn-danger-bg; border-color: @btn-danger-border; color: @btn-danger-color; &:hover{background: @btn-danger-hover-bg; border-color: @btn-danger-hover-border; color: @btn-danger-hover-color;} }
+.btn-info    { background: @btn-info-bg; border-color: @btn-info-border; color: @btn-info-color; &:hover{background: @btn-info-hover-bg; border-color: @btn-info-hover-border; color: @btn-info-hover-color;} }
+.btn-group-color-1{ background: @btn-bg-1; border-color: @btn-border-1; color: @btn-color-1; &:hover{background: @btn-hover-bg-1; border-color: @btn-hover-border-1; color: @btn-hover-color-1;} }

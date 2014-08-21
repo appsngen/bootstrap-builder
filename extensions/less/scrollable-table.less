@@ -1,0 +1,166 @@
+// uses bootstrap and some custom variables
+// @scrollable-table-header-bg - table header background
+// @scrollable-table-footer-bg - table footer background
+// @scrollable-table-line-height - table line height
+
+.scrollable-table {
+  height: 100%;
+  width: 100%;
+  position:relative;
+
+  table {
+    table-layout: fixed;
+    width: 100%;
+
+    td, th {
+      font-size: @font-size-base;
+      color: @text-color;
+      border-bottom: 1px solid @table-border-color;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      padding-left: @table-cell-padding;
+      background: @table-bg;
+      line-height: @scrollable-table-line-height;
+      text-align: left;
+    }
+
+    th {
+      border-bottom: none;
+      background: @scrollable-table-header-bg;
+      cursor: pointer;
+      -webkit-user-select: none; /* Chrome all / Safari all */
+      -moz-user-select: none; /* Firefox all */
+      -ms-user-select: none; /* IE 10+ */
+
+      /* No support for these yet, use at own risk */
+      -o-user-select: none;
+      user-select: none;
+    }
+
+    tr:hover td, .highlight td {
+      background: @table-bg-hover;
+    }
+
+    td:last-child, th:last-child {
+      text-align: right;
+      padding-right: @table-cell-padding;
+      //      width: 100px;
+    }
+
+    td.positive {
+      color: @brand-success;
+    }
+    td.negative {
+      color: @brand-danger;
+    }
+
+    th[data-sort='asc'] span {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      margin-left: 2px;
+      vertical-align: middle;
+      border-top: 0 solid;
+      border-right: 4px solid transparent;
+      border-bottom: 4px solid @text-color;
+      border-left: 4px solid transparent;
+      box-shadow: none;
+    }
+
+    th[data-sort='desc'] span {
+      display: inline-block;
+
+      width: 0;
+      height: 0;
+      margin-left: 2px;
+
+      vertical-align: middle;
+
+      border-top: 4px solid @text-color;
+      border-right: 4px solid transparent;
+      border-bottom: 0 solid;
+      border-left: 4px solid transparent;
+    }
+  }
+
+  .fixed-cell table td:last-child, .fixed-cell table th:last-child {
+    text-align: left;
+  }
+
+  //.footer-table table.common-table td{
+  //  background: @scrollable-table-footer-bg;
+  //}
+  /*.content-table, .header-table{
+      overflow-x:auto;
+  }*/
+  &.fixed .scroll-cell table {
+    min-width: 1000px;
+  }
+
+  .header-table {
+    background: @scrollable-table-header-bg;
+    border-bottom: 1px solid @table-border-color;
+  }
+
+  &.fixed-column {
+    .header-table {
+      display: table;
+      table-layout: fixed;
+      width: 100%;
+      & > .fixed-cell, & > .scroll-cell {
+        display: table-cell;
+        vertical-align: top;
+        overflow: hidden;
+      }
+    }
+
+    .content-table {
+      display: table;
+      table-layout: fixed;
+      width: 100%;
+
+      & > .fixed-cell, & > .scroll-cell {
+        display: table-cell;
+        vertical-align: top;
+        overflow: hidden;
+      }
+    }
+
+    .fixed-cell {
+      width: 11%;
+      border-right: 1px solid @table-border-color;
+
+      .jspPane {
+        width: 100% !important;
+      }
+
+      .jspVerticalBar {
+        display: none;
+      }
+    }
+  }
+
+  .scroll-cell > div, .fixed-cell > div {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  @media screen and (min-width: 0px) and (max-width: 679px) {
+    .fixed-cell {
+      width: 105px !important;
+    }
+  }
+
+  @media screen and (min-width: 0px) and (max-width: 512px) {
+    .dis-512 {
+      display: none !important;
+    }
+  }
+
+  @media screen and (min-width: 0px) and (max-width: 384px) {
+    .dis-384 {
+      display: none !important;
+    }
+  }
+}

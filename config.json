@@ -1,0 +1,59 @@
+{"config":[
+		{"Core":[
+			{"name":"mixins.less", "include": false}
+		]},
+		{"Reset":[
+			{"name":"normalize.less", "include": true},
+			{"name":"print.less", "include": false}
+		]},
+		{"Core_CSS":[
+			{"name":"scaffolding.less", "include": true},
+			{"name":"type.less", "include": false},
+			{"name":"code.less", "include": false},
+			{"name":"grid.less", "include": false},
+			{"name":"tables.less", "include": false},
+			{"name":"forms.less", "include": true},
+			{"name":"buttons.less", "include": true}
+		]},
+		{"Components":[
+			{"name":"scrollable-table.less", "include": false},
+			{"name":"jquery-jscrollpane.less", "include": true},
+			{"name":"waiting.less", "include": true},
+			{"name":"errors.less", "include": true},
+			{"name":"component-animations.less", "include": false},
+			{"name":"glyphicons.less", "include": false},
+			{"name":"dropdowns.less", "include": false},
+			{"name":"button-groups.less", "include": false},
+			{"name":"input-groups.less", "include": false},
+			{"name":"navs.less", "include": false},
+			{"name":"navbar.less", "include": true},
+			{"name":"breadcrumbs.less", "include": false},
+			{"name":"pagination.less", "include": false},
+			{"name":"pager.less", "include": false},
+			{"name":"labels.less", "include": false},
+			{"name":"badges.less", "include": false},
+			{"name":"jumbotron.less", "include": false},
+			{"name":"thumbnails.less", "include": false},
+			{"name":"alerts.less", "include": false},
+			{"name":"progress-bars.less", "include": false},
+			{"name":"media.less", "include": false},
+			{"name":"list-group.less", "include": false},
+			{"name":"panels.less", "include": false},
+			{"name":"wells.less", "include": false},
+			{"name":"close.less", "include": true}
+		]},
+		{"Components_JavaScript":[
+		 	{"name":"modals.less", "include": false},
+	 		{"name":"tooltip.less", "include": false},
+	 		{"name":"popovers.less", "include": false},
+	 		{"name":"carousel.less", "include": false}
+		]},
+		{"Utility_Classes":[
+		 	{"name":"utilities.less", "include": true},
+			{"name":"responsive-utilities.less", "include": false}
+		]}
+	],
+	"compress":false,
+	"theme":true,
+	"variablesPath":"theme/less/variables.less"
+}

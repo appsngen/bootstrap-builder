@@ -1,0 +1,103 @@
+// Errors
+// --------------------------------------------------
+
+.message-wrap(@background;@border-color;@max-width) {
+  max-width: @max-width;
+  background: @background;
+  border-radius: @error-border-radius;
+  border: 1px solid @border-color;
+  padding: @error-padding + 5;
+}
+
+.error {
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 1000;
+  overflow: hidden;
+  display: table;
+  width: 100%;
+
+  .error-button {
+    margin-top: @error-padding;
+  }
+
+  .error-message{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+    padding-left: @error-padding;
+    padding-right: @error-padding;
+  }
+
+  .error-overlay{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .error-message-wrap{
+    display: inline-block;
+  }
+
+  // Global error
+  &.error-global {
+    height: 100%;
+
+    &.error-overlay{
+      background: rgba(red(@error-global-bg),green(@error-global-bg),blue(@error-global-bg),@error-bg-opacity);
+    }
+
+    .error-message {
+      font-size: ceil(@font-size-base * 1.15);
+      color: @error-global-color;
+
+      .error-message-wrap{
+        .message-wrap(@error-global-wrap-bg;@error-local-wrap-border;80%);
+      }
+    }
+  }
+
+  // Local error
+  &.error-local {
+    top: 0;
+    left: 0;
+    height: 100%;
+
+    &.error-overlay{
+      background: rgba(red(@error-local-bg),green(@error-local-bg),blue(@error-local-bg),@error-bg-opacity);
+    }
+
+    .error-message {
+      font-size: @font-size-base;
+      color: @error-local-color;
+
+      .error-message-wrap{
+        .message-wrap(@error-local-wrap-bg;@error-local-wrap-border;40%);
+      }
+    }
+  }
+
+  &.error-alert {
+    top: @error-alert-y;
+    height: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+
+    .error-message {
+      background-color: @error-alert-bg;
+      padding: @error-padding + 5;
+      border: 1px solid @error-alert-wrap-border;
+      border-radius: @error-border-radius;
+      color: @error-alert-color;
+      text-align: left;
+
+      .error-message-wrap{
+        .message-wrap(@error-alert-wrap-bg;@error-alert-wrap-border;100%);
+      }
+    }
+  }
+}

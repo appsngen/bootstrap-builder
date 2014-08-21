@@ -1,0 +1,25 @@
+{
+    "name": "bootstrap-builder",
+    "description": "Tool for custom bootstrap assemblies with LESS output in addition to CSS",
+    "version": "0.0.1",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/appsngen/bootstrap-builder.git"
+    },
+    "author": {
+        "name": "appsngen",
+        "email": "developers@appsngen.com",
+        "url": "https://www.appsngen.com"
+    },
+    "dependencies": {
+        "less": "~1.7.4",
+        "mkdirp":"~0.5.0",
+        "bootstrap":"3.2.0",
+        "jquery":"~2.1.1"
+    }
+}
+
+
+
+
