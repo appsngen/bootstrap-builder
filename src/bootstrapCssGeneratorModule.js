@@ -4,13 +4,20 @@
     var fs = require('fs'),
         less = require('less'),
         mkdirp = require('mkdirp'),
-        bootstrapRoot = 'node_modules/bootstrap/less',
-        extensionsRoot = 'extensions/less',
+        path = require('path'),
+
+
         configName = "config.json",
         themePath = "theme/less/theme.less",
+
         bootstrapIncludePath = "node_modules/bootstrap/less/bootstrap.less",
-        mixinsIncludePath = "node_modules/bootstrap/less/mixins.less",
+        bootstrapRoot = path.dirname(bootstrapIncludePath),
+
+        mixinsIncludePath = path.join(bootstrapRoot, "mixins.less"),
+
         extensionsIncludePath = "extensions/less/bootstrapExtensions.less",
+        extensionsRoot = path.dirname(extensionsIncludePath),
+
         destinationPathCss = "dist/bootstrap-styles.css",
         destinationPathLess = "dist/bootstrap-styles.less",
         coreMaxinsConfig,
@@ -36,9 +43,6 @@
     var parser = new (less.Parser)({
     });
 
-    var replaceAll = function (find, replace, str) {
-        return str.replace(new RegExp(find, 'g'), replace);
-    };
 
     Array.prototype.remove = function (from, to) {
         var rest = this.slice((to || from) + 1 || this.length);
@@ -58,6 +62,10 @@
     };
 
     var readImportsFile = function (file) {
+        var replaceAll = function (find, replace, str) {
+            return str.replace(new RegExp(find, 'g'), replace);
+        };
+
         var opened = readFile(file);
         var listOfFiles = opened.split('\n');
         var index;
@@ -162,13 +170,14 @@
     printBuild(extensionsInclude);
     var extensionsFiles = concatFiles(extensionsInclude, extensionsRoot);
 
-    var result = readFile(variablesPath);
-
-    result = result + mixinFiles + bootstrapFiles + extensionsFiles;
+    var result = mixinFiles + bootstrapFiles + extensionsFiles;
 
     if (isTheme) {
         result = result + readFile(themePath);
     }
+
+    result = result + readFile(variablesPath);
+
     parser.parse(result, function (e, tree) {
         tree.toCSS({ compress: isCompress });
         try {
