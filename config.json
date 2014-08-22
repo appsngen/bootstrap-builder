@@ -1,59 +1,97 @@
-{"config":[
-		{"Core":[
-			{"name":"mixins.less", "include": false}
-		]},
-		{"Reset":[
-			{"name":"normalize.less", "include": true},
-			{"name":"print.less", "include": true}
-		]},
-		{"Core_CSS":[
-			{"name":"scaffolding.less", "include": true},
-			{"name":"type.less", "include": true},
-			{"name":"code.less", "include": true},
-			{"name":"grid.less", "include": true},
-			{"name":"tables.less", "include": true},
-			{"name":"forms.less", "include": true},
-			{"name":"buttons.less", "include": true}
-		]},
-		{"Components":[
-			{"name":"scrollable-table.less", "include": true},
-			{"name":"jquery-jscrollpane.less", "include": true},
-			{"name":"waiting.less", "include": true},
-			{"name":"errors.less", "include": true},
-			{"name":"component-animations.less", "include": true},
-			{"name":"glyphicons.less", "include": true},
-			{"name":"dropdowns.less", "include": true},
-			{"name":"button-groups.less", "include": true},
-			{"name":"input-groups.less", "include": true},
-			{"name":"navs.less", "include": true},
-			{"name":"navbar.less", "include": true},
-			{"name":"breadcrumbs.less", "include": true},
-			{"name":"pagination.less", "include": true},
-			{"name":"pager.less", "include": true},
-			{"name":"labels.less", "include": true},
-			{"name":"badges.less", "include": true},
-			{"name":"jumbotron.less", "include": true},
-			{"name":"thumbnails.less", "include": true},
-			{"name":"alerts.less", "include": true},
-			{"name":"progress-bars.less", "include": true},
-			{"name":"media.less", "include": true},
-			{"name":"list-group.less", "include": true},
-			{"name":"panels.less", "include": true},
-			{"name":"wells.less", "include": true},
-			{"name":"close.less", "include": true}
-		]},
-		{"Components_JavaScript":[
-		 	{"name":"modals.less", "include": true},
-	 		{"name":"tooltip.less", "include": true},
-	 		{"name":"popovers.less", "include": true},
-	 		{"name":"carousel.less", "include": true}
-		]},
-		{"Utility_Classes":[
-		 	{"name":"utilities.less", "include": true},
-			{"name":"responsive-utilities.less", "include": true}
-		]}
-	],
-	"compress":false,
-	"theme":true,
-	"variablesPath":"theme/less/variables.less"
+{
+    "variablesPath": "theme/less/variables.less",
+    "Mixins": {
+        // Utilities
+        "hide-text.less": true,
+        "opacity.less": true,
+        "image.less": true,
+        "labels.less": true,
+        "reset-filter.less": true,
+        "resize.less": true,
+        "responsive-visibility.less": true,
+        "size.less": true,
+        "tab-focus.less": true,
+        "text-emphasis.less": true,
+        "text-overflow.less": true,
+        "vendor-prefixes.less": true,
+
+        // Components
+        "alerts.less": true,
+        "buttons.less": true,
+        "panels.less": true,
+        "pagination.less": true,
+        "list-group.less": true,
+        "nav-divider.less": true,
+        "forms.less": true,
+        "progress-bar.less": true,
+        "table-row.less": true,
+
+        // Skins
+        "background-variant.less": true,
+        "border-radius.less": true,
+        "gradients.less": true,
+
+        // Layout
+        "clearfix.less": true,
+        "center-block.less": true,
+        "nav-vertical-align.less": true,
+        "grid-framework.less": true,
+        "grid.less": true
+    },
+    "Bootsrap":{
+        // Reset and dependencies
+        "normalize.less": true,
+        "print.less": true,
+        "glyphicons.less": true,
+
+        // Core CSS
+        "scaffolding.less": true,
+        "type.less": true,
+        "code.less": true,
+        "grid.less": true,
+        "tables.less": true,
+        "forms.less": true,
+        "buttons.less": true,
+
+        // Components
+        "component-animations.less": true,
+        "dropdowns.less": true,
+        "button-groups.less": true,
+        "input-groups.less": true,
+        "navs.less": true,
+        "navbar.less": true,
+        "breadcrumbs.less": true,
+        "pagination.less": true,
+        "pager.less": true,
+        "labels.less": true,
+        "badges.less": true,
+        "jumbotron.less": true,
+        "thumbnails.less": true,
+        "alerts.less": true,
+        "progress-bars.less": true,
+        "media.less": true,
+        "list-group.less": true,
+        "panels.less": true,
+        "responsive-embed.less": true,
+        "wells.less": true,
+        "close.less": true,
+
+        // Components JavaScript
+        "modals.less": true,
+        "tooltip.less": true,
+        "popovers.less": true,
+        "carousel.less": true,
+
+        // Utility classes
+        "utilities.less": true,
+        "responsive-utilities.less": true
+    },
+    "AppsNgenExtensions":{
+        "scrollable-table.less": true,
+        "jquery-jscrollpane.less": true,
+        "waiting.less": true,
+        "errors.less": true
+    },
+    "themePath": "theme/less/theme.less",
+    "compress":false
 }

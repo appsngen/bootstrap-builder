@@ -38,15 +38,15 @@ bootstrap-builder/
 * `/extensions` - AppsNgen extensions to Bootstrap.
 * `/src` - sources folder.
 * `/theme/less/theme.less` - theme file for Bootstrap extensions.
-* `/theme/less/variables.less` - variables for AppsNgen Dark Gray them.
-* `/theme/less/variables-white.less` - variables for AppsNgen Light Gray them
+* `/theme/less/variables.less` - variables for AppsNgen Dark Gray theme.
+* `/theme/less/variables-white.less` - variables for AppsNgen Light Gray theme.
 
 ###How to use
 
-Go to `config.json` and set `include` as `true` for required comments
+Go to `config.json` and set `true` for required comments. NOTE: order of elements in config file is important
 
 ```
-{"name":"tables.less", "include": true}
+"dropdowns.less": true
 ```
 
 It means that table styles will be included into output `bootstrap.less` and `bootstrap.css` files
