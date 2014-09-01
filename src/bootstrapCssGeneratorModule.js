@@ -90,7 +90,7 @@
                         console.log('----------------------------------');
                         console.log('Created ' + destinationPathCss);
                     });
-                    fs.writeFile(destinationPathLess, bootstrapFiles, function (err) {
+                    fs.writeFile(destinationPathLess, resultLess, function (err) {
                         if (err) {
                             throw err;
                         }
