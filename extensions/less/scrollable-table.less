@@ -1,7 +1,6 @@
-// uses bootstrap and some custom variables
-// @scrollable-table-header-bg - table header background
-// @scrollable-table-footer-bg - table footer background
-// @scrollable-table-line-height - table line height
+//
+// Scrollable table
+// --------------------------------------------------
 
 .scrollable-table {
   height: 100%;
@@ -28,7 +27,6 @@
     th {
       border-bottom: none;
       background: @scrollable-table-header-bg;
-      cursor: pointer;
       -webkit-user-select: none; /* Chrome all / Safari all */
       -moz-user-select: none; /* Firefox all */
       -ms-user-select: none; /* IE 10+ */
@@ -36,9 +34,13 @@
       /* No support for these yet, use at own risk */
       -o-user-select: none;
       user-select: none;
+
+      &[data-id],&[data-link]{
+        cursor: pointer;
+      }
     }
 
-    tr:hover td, .highlight td {
+    .highlight td {
       background: @table-bg-hover;
     }
 

@@ -1,3 +1,21 @@
+/**
+ * version 0.0.3
+ * added:
+ * ----------------------------
+ * class "no-highlight" to manage rows highlight on hover
+ * ----------------------------
+ * data-link attribute to make link on the other cell in header
+ * (if u click on cell with attr data-link,
+ * click will trigger on cell which was in data-link attr)
+ * ----------------------------
+ * if in header cell no attr data-id, this cell will not be sortable
+ * ----------------------------
+ * fixed bug with jsp data object
+ * 
+ * version 0.0.4
+ * fixed bug with padding if fixed column when horizonal scroll is visible
+ */
+
 (function ($) {
     'use strict';
 
@@ -13,7 +31,7 @@
      */
     var ScrollableTable = function (container, jspOptionsObj) {
         var that = this, isFixedColumn;
-        this.version = '0.0.2';
+        this.version = '0.0.3';
         this.settings = {
             mouseWheelSpeed: 30,
             horizontalGutter: 1,
@@ -48,7 +66,7 @@
             // handler for table header click
             // trigger event 'st-header-click'
             // return to callback click event, header id, sort order
-            this.$globalHeaderWrapper.find('th').bind('click', function () {
+            this.$globalHeaderWrapper.on('click.st', 'th', function () {
                 var $th = $(this);
                 var dataLink = $th.attr('data-link');
                 if (dataLink) {
@@ -56,38 +74,45 @@
                     return;
                 }
                 var dataId = $th.attr('data-id');
-                var order = $th.attr('data-sort');
-                if (order) {
-                    order = order === 'asc' ? 'desc' : 'asc';
-                    $th.attr('data-sort', order);
-                } else {
-                    order = 'asc';
-                    that.$globalHeaderWrapper.find('th').attr('data-sort', '');
-                    $th.attr('data-sort', order);
+                if (dataId) {
+                    var order = $th.attr('data-sort');
+                    if (order) {
+                        order = order === 'asc' ? 'desc' : 'asc';
+                        $th.attr('data-sort', order);
+                    } else {
+                        order = 'asc';
+                        that.$globalHeaderWrapper.find('th').attr('data-sort', '');
+                        $th.attr('data-sort', order);
+                    }
+                    that.$globalContainer.trigger('st-header-click', [dataId, order]);
                 }
-                that.$globalContainer.trigger('st-header-click', [dataId, order]);
             });
         }
 
         this.isScrollX = false;
         this.isScrollY = false;
 
-        // handler for highlight rows in tables on hover
-        this.$globalBodyWrapper.on('mouseover', 'tr', function () {
-            var index = $(this).index() + 1;
-            that.$globalBodyWrapper.find('tr:nth-child(' + index + ')').addClass('highlight');
-        });
+        var isHighlightRows = !this.$globalContainer.hasClass('no-highlight');
+        if (isHighlightRows) {
+            // handler for highlight rows in tables on hover
+            this.$globalBodyWrapper.on('mouseover.st', 'tr', function () {
+                var index = $(this).index() + 1;
+                that.$globalBodyWrapper.find('tr:nth-child(' + index + ')').addClass('highlight');
+            });
 
-        // handler for removing highlight rows in tables on hover
-        this.$globalBodyWrapper.on('mouseleave', 'tr', function () {
-            var index = $(this).index() + 1;
-            that.$globalBodyWrapper.find('tr:nth-child(' + index + ')').removeClass('highlight');
-        });
+            // handler for removing highlight rows in tables on hover
+            this.$globalBodyWrapper.on('mouseleave.st', 'tr', function () {
+                var index = $(this).index() + 1;
+                that.$globalBodyWrapper.find('tr:nth-child(' + index + ')').removeClass('highlight');
+            });
+
+        }
+
 
         // handler for scrolling x
         // trigger event 'st-scroll-x'
         // return to callback wheel event and scroll position x
-        this.scroll.container.$body.bind('jsp-scroll-x', function (event, scrollPositionX) {
+        this.scroll.container.$body.bind('jsp-scroll-x.st', function (event, scrollPositionX) {
             if ($(this).find('.jspDrag').hasClass('jspActive') || that.scroll.container.$body.is(':hover')) {
                 that.scroll.container.$header.scrollLeft(scrollPositionX);
                 that.$globalContainer.trigger('st-scroll-x', [scrollPositionX]);
@@ -97,7 +122,7 @@
         // handler for scrolling y
         // trigger event 'st-scroll-y'
         // return to callback wheel event and scroll position y
-        this.scroll.container.$body.bind('jsp-scroll-y', function (event, scrollPositionY) {
+        this.scroll.container.$body.bind('jsp-scroll-y.st', function (event, scrollPositionY) {
             if ($(this).find('.jspDrag').hasClass('jspActive') || that.scroll.container.$body.is(':hover')) {
                 if (that.fixed) {
                     that.fixed.container.$body.data('jsp').scrollToY(scrollPositionY);
@@ -109,19 +134,18 @@
         // handler for initialised jScrollPane
         // used for set margins and puddings(needs for good looking when scrolls are visible)
         // and init isScrollX and  isScrollY variables
-        this.scroll.container.$body.bind('jsp-initialised', function () {
+        this.scroll.container.$body.bind('jsp-initialised.st', function () {
             var verticalScroll = that.scroll.container.$body.find('.jspVerticalBar');
             var horizontalScroll = that.scroll.container.$body.find('.jspHorizontalBar');
             if (horizontalScroll[0]) {
                 if (that.isScrollX === false) {
                     that.isScrollX = true;
-                    if (that.fixed) {
+                    if (that.fixed && verticalScroll[0]) {
                         that.fixed.container.$body.find('table').css(
                             {
                                 marginBottom: horizontalScroll.outerHeight() + 'px'
                             });
                     }
-
                 }
             } else {
                 if (that.isScrollX === true) {
@@ -147,7 +171,7 @@
 
         //handler mouseleave
         //used for fix jScrollPane bug with focus on touch devices
-        this.$globalContainer.bind('mouseleave', function () {
+        this.$globalContainer.bind('mouseleave.st', function () {
             $('html').unbind('dragstart.jsp selectstart.jsp mousemove.jsp mouseup.jsp mouseleave.jsp');
             var horizontalBar = $('.jspHorizontalBar');
             var horizontalTrack = horizontalBar.find('.jspTrack');
@@ -166,7 +190,7 @@
 
         //handler touchmove
         //used for fix jScrollPane bug with touch devices focus
-        this.$globalContainer.bind('touchmove', function (e) {
+        this.$globalContainer.bind('touchmove.st', function (e) {
             var pageY = +e.originalEvent.touches[0].pageY;
             var pageX = +e.originalEvent.touches[0].pageX;
             var $body = $('body');
@@ -195,7 +219,7 @@
                 $body: that.fixed.table.$body.parent()
             };
 
-            this.fixed.container.$body.bind('jsp-scroll-y', function (event, scrollPositionY) {
+            this.fixed.container.$body.bind('jsp-scroll-y.st', function (event, scrollPositionY) {
                 if ($(this).find('.jspDrag').hasClass('jspActive') || that.fixed.container.$body.is(':hover')) {
                     if (that.scroll) {
                         that.scroll.container.$body.data('jsp').scrollToY(scrollPositionY);
@@ -280,6 +304,17 @@
      * destroy scrollable table and remove all event handlers
      */
     ScrollableTable.prototype.destroy = function () {
+        this.$globalContainer.css({
+            overflow: 'auto',
+            height: 'auto'
+        });
+
+        this.scroll.container.$body.css({height: 'auto'});
+        this.scroll.container.$header.removeAttr('margin-right');
+
+        this.$globalContainer.unbind('.st');
+        this.$globalBodyWrapper.unbind('.st');
+
         this.$globalBodyWrapper.unbind('mouseover');
         this.$globalContainer.unbind('touchmove');
         this.$globalBodyWrapper.unbind('mouseleave');
@@ -290,14 +325,14 @@
         this.$globalContainer.unbind('st-header-click');
         this.$globalContainer.unbind('st-scroll-x');
         this.$globalContainer.unbind('st-scroll-y');
+
         this.scroll.jspApi.destroy();
         if (this.fixed) {
+            this.scroll.container.$body.css({height: 'auto'});
+            this.fixed.table.$body.removeAttr('margin-bottom');
             this.fixed.jspApi.destroy();
         }
-        this.scroll.container.$body.height('auto');
-        if (this.fixed) {
-            this.fixed.container.$body.height('auto');
-        }
+        this.$globalContainer.removeData('bs.st');
     };
 
     $.fn.scrollableTable = function (option) {
