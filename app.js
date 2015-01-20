@@ -1,3 +1,4 @@
 (function () {
-    require("./src/bootstrapCssGeneratorModule.js");
+    'use strict';
+    require("./src/bootstrapCssGeneratorModule");
 }());
