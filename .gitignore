@@ -1,4 +1,5 @@
 .idea
+.out
 *.tmp
 dist
 node_modules
