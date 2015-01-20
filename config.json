@@ -94,5 +94,20 @@
         "errors.less": true
     },
     "themePath": "theme/less/theme.less",
-    "compress":false
+    "compress":false,
+    "restServicesUrls": {
+        "tokenService": {
+            "host": "www.appsngen.com",
+            "path": "/auth-service/tokens"
+        },
+        "preferencesService": {
+            "host": "www.appsngen.com",
+            "path": "/rest-services/preferences/global?view=general&organizationId="
+        }
+    },
+    "user" : {
+        "password": "",
+        "name" : ""
+    },
+    "organizationId": ""
 }
