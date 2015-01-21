@@ -112,57 +112,36 @@
         }, errorCallback);
     };
 
-    exports.splitKeyValue = function(keyValue){
+    var splitKeyValue = function(keyValue){
         var preferenceObj = {
             name : "",
             key : ""
-        }, lastIndex;
-        var index = keyValue.indexOf(' '), j, i;
-        var additionalIndex = keyValue.indexOf('\t');
-        if(additionalIndex !== -1 && (additionalIndex < index || index === -1)){
-            index = additionalIndex;
-        }
-        if(index !== -1){
-            preferenceObj.name = keyValue.substring(1, index-1);
-            for(i = index; i < keyValue.length; i++) {
-                if(keyValue[i] !== ' ' && keyValue[i] !== '\t'){
-                    if(keyValue.indexOf('//') !== -1 && keyValue.indexOf('//') > i){
-                        lastIndex = keyValue.indexOf('//');
-                    }else{
-                        lastIndex = keyValue.length;
-                    }
-                    preferenceObj.key = keyValue.substring(i, lastIndex).trim().replace(/;/g,'');
-                    return preferenceObj;
-                }
-            }
-        }
+        };
+        keyValue = keyValue.substring(1, keyValue.indexOf(';'));
+        var keyValueArray = keyValue.split(':');
+
+        preferenceObj.name = keyValueArray[0].trim();
+        preferenceObj.key = keyValueArray[1].trim();
+
+        return preferenceObj;
     };
 
     exports.getVariables = function(config){
-        Array.prototype.remove = function (from, to) {
-            var rest = this.slice((to || from) + 1 || this.length);
-            this.length = from < 0 ? this.length + from : from;
-            return this.push.apply(this, rest);
-        };
         var globalPreferences, content;
         var preferences = [];
-        var i = 0, preference;
+        var i, preference;
         content = fs.readFileSync(__dirname + '/../' + config.path);
         globalPreferences = content.toString().split('\n');
 
-        while (i < globalPreferences.length)
+        for(i = 0; i < globalPreferences.length; i++)
         {
             if(globalPreferences[i] !== '' &&
                 globalPreferences[i].indexOf('//') !== 0 &&
                 globalPreferences[i] !== '\r' &&
                 globalPreferences[i] !== '\r\n' &&
                 globalPreferences[i] !== '\n') {
-                preference = this.splitKeyValue(globalPreferences[i]);
+                preference = splitKeyValue(globalPreferences[i]);
                 preferences.push(preference);
-                i++;
-            }
-            else{
-                globalPreferences.remove(i);
             }
         }
 

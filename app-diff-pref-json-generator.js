@@ -3,12 +3,12 @@
  */
 (function () {
     'use strict';
-    var generator = require("./src/jsonGenerator");
-    var t = generator.readConfiguration();
-    generator.getToken(t, function(token){
-        generator.getPreferences(t, token, function(globalPreferencesResponse){
+    var generator = require("./src/diffPrefsGenerator");
+    var config = generator.readConfiguration();
+    generator.getToken(config, function(token){
+        generator.getPreferences(config, token, function(globalPreferencesResponse){
             var globalPreferences = globalPreferencesResponse.organizationPreferences;
-            var preferences = generator.getVariables(t);
+            var preferences = generator.getVariables(config);
             var newPreferences = generator.getNewPreferences(preferences, globalPreferences);
             var changedPreferences = generator.getChangedPreferences(preferences, globalPreferences);
             preferences = generator.convertListToObject(preferences);
