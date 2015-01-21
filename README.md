@@ -76,11 +76,13 @@ Appsngen themes based on 5 variables:
 * `@gray-lighter` - text
 
 
- >For simple customization you can update values only for variables provided above.
+
+
+>For simple customization you can update values only for variables provided above.
 
 __OR__
 
- >For more custom solutions you can update value for all bootstrap variables.
+>For more custom solutions you can update value for all bootstrap variables.
 
 Then build custom theme with command:
 
