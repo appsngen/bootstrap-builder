@@ -3,20 +3,10 @@ Bootstrap builder
 
 Tool for custom bootstrap assemblies with LESS output in addition to CSS
 
-
-
-###Installation
-To install bootstrap builder:
-* install node.js(http://nodejs.org/download/)
-* Setup dependencies with following command:
-
-```
-$ npm install
-```
-
 ###Directory Structure
+> `bootstrap-builder` is a root folder
 
-bootstrap-builder/
+bootstrap-builder/  
 ├── dist/    
 │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── bootstrap.css  
 │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── bootstrap.less  
@@ -41,9 +31,20 @@ bootstrap-builder/
 * `/theme/less/variables-white.less` - variables for AppsNgen Light Gray theme.
 
  
+
+###Installation
+To install bootstrap builder:
+* install node.js(http://nodejs.org/download/)
+* execute following command in command prompt in the `root folder` to setup dependencies:
+
+```
+$ npm install
+```
+
+
 ###Build custom theme
 
-Build custom theme with command in command prompt:
+Build custom theme with command in command prompt in the `root folder`:
 
 ```
 $ node app 
@@ -51,7 +52,7 @@ $ node app
 
 ###How to use
 
-Go to `config.json` and set `true` for required comments. NOTE: order of elements in config file is important
+Go to `config.json` and set `true` for required components. NOTE: order of elements in config file is important
 
 ```
 "dropdowns.less": true
@@ -63,7 +64,7 @@ Include required components into your theme by changing `config.json`
 
 Define styles that are not defined in Bootstrap in `theme/less/theme.less`
 
-###Generate new color schem
+###Generate new color theme
 
 Go to `theme/less/variables.less` and set new values for required variables.
 
@@ -74,9 +75,10 @@ Appsngen themes based on 5 variables:
 * `@gray-light` - secondary text/icons/dividers
 * `@gray-lighter` - text
 
+
  >For simple customization you can update values only for variables provided above.
 
-    __OR__
+__OR__
 
  >For more custom solutions you can update value for all bootstrap variables.
 
