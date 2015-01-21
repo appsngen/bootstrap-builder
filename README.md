@@ -3,16 +3,15 @@ Bootstrap builder
 
 Tool for custom bootstrap assemblies with LESS output in addition to CSS
 
-Setup dependencies with following command:
+
+
+###Installation
+To install bootstrap builder:
+* install node.js(http://nodejs.org/download/)
+* Setup dependencies with following command:
 
 ```
 $ npm install
-```
-
-Build custom theme with command:
-
-```
-$ node app 
 ```
 
 ###Directory Structure
@@ -41,6 +40,15 @@ bootstrap-builder/
 * `/theme/less/variables.less` - variables for AppsNgen Dark Gray theme.
 * `/theme/less/variables-white.less` - variables for AppsNgen Light Gray theme.
 
+ 
+###Build custom theme
+
+Build custom theme with command in command prompt:
+
+```
+$ node app 
+```
+
 ###How to use
 
 Go to `config.json` and set `true` for required comments. NOTE: order of elements in config file is important
@@ -54,6 +62,29 @@ It means that table styles will be included into output `bootstrap.less` and `bo
 Include required components into your theme by changing `config.json`
 
 Define styles that are not defined in Bootstrap in `theme/less/theme.less`
+
+###Generate new color schem
+
+Go to `theme/less/variables.less` and set new values for required variables.
+
+Appsngen themes based on 5 variables:
+* `@gray-darker` - headers
+* `@gray-dark` - background
+* `@gray` - bars/buttons
+* `@gray-light` - secondary text/icons/dividers
+* `@gray-lighter` - text
+
+ >For simple customization you can update values only for variables provided above.
+
+    __OR__
+
+ >For more custom solutions you can update value for all bootstrap variables.
+
+Then build custom theme with command:
+
+```
+$ node app 
+```
 
 ## License
 
