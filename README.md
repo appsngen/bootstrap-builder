@@ -84,7 +84,7 @@ __OR__
 
 >For more custom solutions you can update value for all bootstrap variables.
 
-Then build custom theme with command:
+Build custom theme with command in command prompt in the `root folder`:
 
 ```
 $ node app 
