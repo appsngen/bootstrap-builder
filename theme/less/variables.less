@@ -9,19 +9,11 @@
 
 @gray-base:              #000;
 
-//@gray-darker:            #1a1a1a;
-//@gray-dark:              #262626;
-//@gray:                   #404040;
-//@gray-light:             #808080;
-//@gray-lighter:           #cccccc;
-
-//----------------------------------
-
-@gray-darker:            #ffffff;
-@gray-dark:              #f2f2f2;
-@gray:                   #d9d9d9;
-@gray-light:             #8c8c8c;
-@gray-lighter:           #404040;
+@gray-darker:            #1a1a1a;
+@gray-dark:              #262626;
+@gray:                   #404040;
+@gray-light:             #808080;
+@gray-lighter:           #cccccc;
 
 @brand-primary:         darken(#428bca, 6.5%);
 @brand-success:         #5cb85c;
@@ -128,7 +120,7 @@
 // Scrollable Tables
 // -------------------------
 
-@scrollable-table-header-bg:	@gray-darker;
+@scrollable-table-header-bg:	darken(@table-bg,10%);
 @scrollable-table-footer-bg:	#404040;//TODO:update color
 @scrollable-table-line-height:	floor(@line-height-computed * 2);
 
@@ -363,15 +355,15 @@
 
 // Basics of a navbar
 @navbar-height:                    48px;
-@navbar-margin-bottom:             @line-height-computed;
-@navbar-border-radius:             @border-radius-base;
+@navbar-margin-bottom:             0;
+@navbar-border-radius:             0;
 @navbar-padding-horizontal:        floor((@grid-gutter-width / 2));
 @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
 @navbar-collapse-max-height:       340px;
 
 @navbar-default-color:             @gray-lighter;
 @navbar-default-bg:                @gray;
-@navbar-default-border:            darken(@navbar-default-bg, 6%);
+@navbar-default-border:            transparent;
 
 // Navbar links
 @navbar-default-link-color:                @gray-lighter;
@@ -384,7 +376,7 @@
 
 // Navbar brand label
 @navbar-default-brand-color:               @navbar-default-link-color;
-@navbar-default-brand-hover-color:         @navbar-default-link-hover-color;
+@navbar-default-brand-hover-color:         @navbar-default-link-color;
 @navbar-default-brand-hover-bg:            transparent;
 
 // Navbar toggle
@@ -894,40 +886,26 @@
 @waiting-size: 32px;
 @waiting-bg: @gray-lighter;
 @waiting-waiter-bg: #000000;
-//TODO:CHECK waiting
-@waiting-size : 32px;
-@waiting-bg : @gray-lighter;
-@waiting-waiter-bg : @gray-dark;
 
 // Errors
 // --------------------------------------------------
 
 // General for errors
 @error-border-radius : @border-radius-base;
-@error-padding : 10px;
-@error-bg-opacity : 1;
+@error-padding : @padding-base-horizontal;
+@error-bg-opacity : 0.9;
 
 // Local error
 @error-local-bg: @gray;
-@error-local-wrap-bg: @input-bg;
+@error-local-wrap-bg: @gray-darker;
 @error-local-wrap-border: transparent;
 @error-local-color: @text-color;
 
 // Global error
-@error-global-bg: @btn-default-border;
-@error-global-wrap-bg: @input-bg;
-@error-global-wrap-border: transparent;
-@error-global-color: @gray;
-@error-local-bg : @gray;
-@error-local-wrap-bg : @gray-darker;
-@error-local-wrap-border : transparent;
-@error-local-color : @gray-lighter;
-
-// Global error
-@error-global-bg: @gray-darker;
-@error-global-wrap-bg: @gray-dark;
+@error-global-bg: @gray-dark;
+@error-global-wrap-bg: @gray-darker;
 @error-global-wrap-border : transparent;
-@error-global-color : @gray-lighter;
+@error-global-color : @text-color;
 
 // Alert error
 @error-alert-bg: @alert-danger-bg;
@@ -935,8 +913,3 @@
 @error-alert-wrap-border: @alert-danger-border;
 @error-alert-color: @alert-danger-text;
 @error-alert-y: 5px;
-
-@error-border-radius: @border-radius-base;
-@error-padding: 10px;
-@error-bg-opacity: 1;
-
