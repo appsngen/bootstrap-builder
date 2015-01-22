@@ -2,131 +2,114 @@
 // jQuery jScrollPane
 // --------------------------------------------------
 
+.jspContainer {
+  position: relative;
 
-.jspContainer
-{
-    position: relative;
-
-    overflow: hidden;
+  overflow: hidden;
 }
 
-.jspPane
-{
-    position: absolute;
+.jspPane {
+  position: absolute;
 }
 
-.jspVerticalBar
-{
-    position: absolute;
-    top: 0;
-    right: 0;
+.jspVerticalBar {
+  position: absolute;
+  top: 0;
+  right: 0;
 
-    width: 7px;
-    height: 100%;
+  width: 7px;
+  height: 100%;
 
-    background: @gray-darker;
+  background: darken(@table-bg,5%);
 }
 
-.jspHorizontalBar
-{
-    position: absolute;
-    bottom: 0;
-    left: 0;
+.jspHorizontalBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
 
-    width: 100%;
-    height: 7px;
+  width: 100%;
+  height: 7px;
 
-    background: @gray-darker;
+  background: darken(@table-bg,5%);
 }
 
-.jspCap
-{
-    display: none;
+.jspCap {
+  display: none;
 }
 
-.jspHorizontalBar .jspCap
-{
-    float: left;
+.jspHorizontalBar .jspCap {
+  float: left;
 }
 
-.jspTrack
-{
-    position: relative;
+.jspTrack {
+  position: relative;
 
-    background: @body-bg;
+  background: darken(@table-bg,5%);
 }
 
-.jspDrag
-{
-    position: relative;
-    top: 0;
-    left: 1px;
+.jspDrag {
+  position: relative;
+  top: 0;
+  left: 1px;
 
-    width: 5px;
+  width: 5px;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    border-radius: 5px;
-    background: darken(@btn-default-bg, 10%);
+  border-radius: 5px;
+  background: @table-bg;
 }
 
 .jspHorizontalBar .jspTrack,
-.jspHorizontalBar .jspDrag
-{
-    float: left;
+.jspHorizontalBar .jspDrag {
+  float: left;
 
-    height: 100%;
+  height: 100%;
 }
 
-.jspArrow
-{
-    display: block;
+.jspArrow {
+  display: block;
 
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 
-    cursor: pointer;
-    text-indent: -20000px;
+  cursor: pointer;
+  text-indent: -20000px;
 
-    background: @gray-darker;
+  background: lignten(@table-bg,6%);
 }
 
-.jspArrow.jspDisabled
-{
-    cursor: default;
+.jspArrow.jspDisabled {
+  cursor: default;
 
-    background: @btn-default-bg;
+  background: lignten(@table-bg,6%);
 }
 
-.jspVerticalBar .jspArrow
-{
-    height: 16px;
+.jspVerticalBar .jspArrow {
+  height: 16px;
 }
 
-.jspHorizontalBar .jspArrow
-{
-    float: left;
+.jspHorizontalBar .jspArrow {
+  float: left;
 
-    width: 16px;
-    height: 100%;
+  width: 16px;
+  height: 100%;
 }
 
-.jspVerticalBar .jspArrow:focus
-{
-    outline: none;
+.jspVerticalBar .jspArrow:focus {
+  outline: none;
 }
 
-.jspCorner
-{
-    float: left;
+.jspCorner {
+  float: left;
 
-    height: 100%;
+  height: 100%;
 
-    background: @btn-default-color;
+  background: darken(@table-bg,5%);
 }
 
 /* Yuk! CSS Hack for IE6 3 pixel bug :( */
-* html .jspCorner
-{
-    margin: 0 -3px 0 0;
+* html .jspCorner {
+  margin: 0 -3px 0 0;
 }

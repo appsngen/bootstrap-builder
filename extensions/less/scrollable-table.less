@@ -57,12 +57,17 @@
       color: @brand-danger;
     }
 
-    th[data-sort='asc'] span {
+    th[data-sort='asc']:after{
+      content: '';
+
       display: inline-block;
+
       width: 0;
       height: 0;
+
       margin-left: 2px;
       vertical-align: middle;
+
       border-top: 0 solid;
       border-right: 4px solid transparent;
       border-bottom: 4px solid @text-color;
@@ -70,19 +75,22 @@
       box-shadow: none;
     }
 
-    th[data-sort='desc'] span {
+    th[data-sort='desc']:after{
+      content: '';
+
       display: inline-block;
 
       width: 0;
       height: 0;
-      margin-left: 2px;
 
+      margin-left: 2px;
       vertical-align: middle;
 
       border-top: 4px solid @text-color;
       border-right: 4px solid transparent;
       border-bottom: 0 solid;
       border-left: 4px solid transparent;
+      box-shadow: none;
     }
   }
 
