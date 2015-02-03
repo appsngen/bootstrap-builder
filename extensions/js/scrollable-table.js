@@ -1,4 +1,20 @@
 /**
+ * version 0.0.7
+ * added footer
+ * fixed adding margins when scroll panel is visible
+ *
+ * version 0.0.6
+ * fixed sortable icon for android
+ * updated styles for soring-icon(added :after styles)
+ * added force rerender of sorting icon because of android issue with data attrs
+ * for more info: http://jeffmcmahan.info/blog/android-webview-ignores-attribute-selectors/
+ *
+ * version 0.0.5
+ * fixed bug with not removing table header click when destroy method called
+ *
+ * version 0.0.4
+ * fixed bug with padding if fixed column when horizonal scroll is visible
+ *
  * version 0.0.3
  * added:
  * ----------------------------
@@ -11,14 +27,10 @@
  * if in header cell no attr data-id, this cell will not be sortable
  * ----------------------------
  * fixed bug with jsp data object
- * 
- * version 0.0.4
- * fixed bug with padding if fixed column when horizonal scroll is visible
  */
 
 (function ($) {
     'use strict';
-
     /** Plugin allow to create table with fixed header and column
      *  js dependencies : jquery.js, jquery.mousewheel.js, jquery.jScrollPane.js
      *
@@ -31,7 +43,7 @@
      */
     var ScrollableTable = function (container, jspOptionsObj) {
         var that = this, isFixedColumn;
-        this.version = '0.0.3';
+        this.version = '0.0.7';
         this.settings = {
             mouseWheelSpeed: 30,
             horizontalGutter: 1,
@@ -48,18 +60,21 @@
 
         this.$globalHeaderWrapper = this.$globalContainer.find('.header-table');
         this.$globalBodyWrapper = this.$globalContainer.find('.content-table');
+        this.$globalFooterWraper = this.$globalContainer.find('.footer-table');
 
         // object that contains all data for scrollable part of table
         this.scroll = {};
         // table contains jquery object of tables with data
         this.scroll.table = {
             $header: that.$globalHeaderWrapper.find('.scroll-cell table'),
-            $body: that.$globalBodyWrapper.find('.scroll-cell table')
+            $body: that.$globalBodyWrapper.find('.scroll-cell table'),
+            $footer: that.$globalFooterWraper.find('.scroll-cell table')
         };
         // containers contains wrappers of tables which is used for scrolling
         this.scroll.container = {
             $header: that.scroll.table.$header.parent(),
-            $body: that.scroll.table.$body.parent()
+            $body: that.scroll.table.$body.parent(),
+            $footer: that.scroll.table.$footer.parent()
         };
 
         if (this.$globalHeaderWrapper) {
@@ -78,16 +93,20 @@
                     var order = $th.attr('data-sort');
                     if (order) {
                         order = order === 'asc' ? 'desc' : 'asc';
-                        $th.attr('data-sort', order);
                     } else {
                         order = 'asc';
                         that.$globalHeaderWrapper.find('th').attr('data-sort', '');
-                        $th.attr('data-sort', order);
                     }
+                    $th.attr('data-sort', order);
+                    // http://jeffmcmahan.info/blog/android-webview-ignores-attribute-selectors/
+                    // force rerender sort icon in browser
+                    $th.find(':after').hide().show();
+
                     that.$globalContainer.trigger('st-header-click', [dataId, order]);
                 }
             });
         }
+
 
         this.isScrollX = false;
         this.isScrollY = false;
@@ -115,6 +134,7 @@
         this.scroll.container.$body.bind('jsp-scroll-x.st', function (event, scrollPositionX) {
             if ($(this).find('.jspDrag').hasClass('jspActive') || that.scroll.container.$body.is(':hover')) {
                 that.scroll.container.$header.scrollLeft(scrollPositionX);
+                that.scroll.container.$footer.scrollLeft(scrollPositionX);
                 that.$globalContainer.trigger('st-scroll-x', [scrollPositionX]);
             }
         });
@@ -160,11 +180,13 @@
                 if (that.isScrollY === false) {
                     that.isScrollY = true;
                     that.scroll.container.$header.css({marginRight: verticalScroll.outerWidth() + 'px'});
+                    that.scroll.container.$footer.css({marginRight: verticalScroll.outerWidth() + 'px'});
                 }
             } else {
-                if (that.isScrollY === false) {
+                if (that.isScrollY === true) {
                     that.isScrollY = false;
                     that.scroll.container.$header.css({marginRight: '0px'});
+                    that.scroll.container.$footer.css({marginRight: '0px'});
                 }
             }
         });
@@ -246,7 +268,8 @@
     ScrollableTable.prototype.setBodyHeight = function () {
         var containerHeight = this.$globalContainer.outerHeight();
         var headerHeight = this.$globalHeaderWrapper.outerHeight() || 0;
-        var height = containerHeight - headerHeight;
+        var footerHeight = this.$globalFooterWraper.outerHeight() || 0;
+        var height = containerHeight - headerHeight - footerHeight;
         this.scroll.container.$body.height(height);
         if (this.fixed) {
             this.fixed.container.$body.height(height);
@@ -313,12 +336,13 @@
         this.scroll.container.$header.removeAttr('margin-right');
 
         this.$globalContainer.unbind('.st');
+        this.$globalHeaderWrapper.unbind('.st');
         this.$globalBodyWrapper.unbind('.st');
 
         this.$globalBodyWrapper.unbind('mouseover');
         this.$globalContainer.unbind('touchmove');
         this.$globalBodyWrapper.unbind('mouseleave');
-        this.$globalHeaderWrapper.find('th').unbind('click');
+
         this.scroll.container.$body.unbind('jsp-scroll-x');
         this.scroll.container.$body.unbind('jsp-scroll-y');
         this.scroll.container.$body.unbind('jsp-initialised');
