@@ -1,7 +1,3 @@
-//
-// Errors
-// --------------------------------------------------
-
 .message-wrap(@background;@border-color;@max-width) {
   max-width: @max-width;
   background: @background;
@@ -78,6 +74,7 @@
 
       .error-message-wrap{
         .message-wrap(@error-local-wrap-bg;@error-local-wrap-border;40%);
+        min-width: 160px;
       }
     }
   }
