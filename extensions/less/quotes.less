@@ -1,0 +1,113 @@
+.quotes-panel {
+  position: relative;
+  width: 100%;
+  background: @gray-darker;
+
+  .quotes-row {
+    width: 100%;
+    position: relative;
+
+    &::after {
+      content: "";
+      clear: both;
+      display: block;
+    }
+  }
+
+  .quotes-item {
+    padding: 0 20px;
+    float: left;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: @font-size-base * 3;
+
+    &:last-child {
+      float: right;
+      text-align: right;
+      color: @gray-light;
+    }
+  }
+
+  .star {
+    display: inline-block;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &::before {
+      content: 'Following';
+    }
+
+    .glyphicon.glyphicon-star {
+      color: @gray-lighter;
+      top: 5px;
+      font-size: @font-size-base*1.5;
+    }
+  }
+
+  .w70 {
+    width: 70%;
+  }
+
+  .w50 {
+    width: 50%;
+  }
+
+  .w30 {
+    width: 30%;
+  }
+
+  .big {
+    text-transform: uppercase;
+    font-size: @font-size-large * 1.15;
+
+    .big-smaller {
+      font-size: @font-size-large * 1.15 - 3;
+    }
+  }
+
+  .positive{
+    color: @brand-success;
+  }
+
+  .negative{
+    color: @brand-danger
+  }
+}
+
+@media screen  and (max-width: 512px) {
+  .quotes-panel .star::before {
+    content: '';
+  }
+
+  .hide512 {
+    display: none;
+  }
+}
+
+@media screen  and (max-width: 384px) {
+  .quotes-panel {
+    .item-block {
+      padding-bottom: 10px;
+
+      .quotes-item {
+        padding: 0 20px;
+        width: 100%;
+        float: none;
+        line-height: @line-height-base;
+
+        &:last-child {
+          text-align: left;
+        }
+      }
+
+    }
+
+    .big {
+      .big-smaller {
+        font-size: @font-size-large - 4;
+      }
+    }
+  }
+}
