@@ -55,7 +55,7 @@
 
         // Components
         "component-animations.less": false,
-        "dropdowns.less": false,     
+        "dropdowns.less": true,     
         "button-groups.less": false,
         "input-groups.less": false,
         "navs.less": false,     // required for widgets
@@ -87,11 +87,12 @@
         "responsive-utilities.less": true
     },
     "AppsNgenExtensions": {
-        "scrollable-table.less": false,     // required for widgets
+        "scrollable-table.less": true,     // required for widgets
         "scrollable-container.less": false,     // required for widgets
-        "jquery-jscrollpane.less": false,     // required for widgets
-        "waiting.less": false,     // required for widgets
-        "errors.less": false                 // required for widgets
+        "jquery-jscrollpane.less": true,     // required for widgets
+        "waiting.less": true,     // required for widgets
+        "errors.less": true,                 // required for widgets
+        "quotes.less": true
     },
     "themePath": "theme/less/theme.less",
     "compress": false,
