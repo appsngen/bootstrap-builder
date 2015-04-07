@@ -4,7 +4,7 @@ Bootstrap builder
 Tool for custom bootstrap assemblies with LESS output in addition to CSS
 
 ###Directory Structure
-> `bootstrap-builder` is a root folder
+> `bootstrap-builder` is a root folder.
 
 bootstrap-builder/  
 ├── dist/    
@@ -22,8 +22,8 @@ bootstrap-builder/
 
 
 * `/dist` - automatically generated folder with results output.
-* `/dist/bootstrap.css` - CSS compiled form `bootstrap.less`, which includes only components defined in `config.json`.
-* `/dist/bootstrap.less` - LESS file, which includes only components defined in `config.json`.
+* `/dist/bootstrap.css` - CSS compiled form `bootstrap.less` which includes only components defined in `config.json`.
+* `/dist/bootstrap.less` - LESS file which includes only components defined in `config.json`.
 * `/extensions` - AppsNgen extensions to Bootstrap.
 * `/src` - sources folder.
 * `/theme/less/theme.less` - theme file for Bootstrap extensions.
@@ -34,15 +34,15 @@ bootstrap-builder/
 
 ###Installation
 To install bootstrap builder:
-* install node.js(http://nodejs.org/download/)
-* execute following command in command prompt in the `root folder` to setup dependencies:
+* install node.js (http://nodejs.org/download/)
+* execute the following command in command prompt in the `root folder` to set up dependencies:
 
 ```
 $ npm install
 ```
 
 
-###Build custom theme
+###Build Custom Theme
 
 Build custom theme with command in command prompt in the `root folder`:
 
@@ -52,30 +52,28 @@ $ node app
 
 ###How to use
 
-Go to `config.json` and set `true` for required components. NOTE: order of elements in config file is important
+Go to `config.json` and set `true` for required components. NOTE: Order of elements in the config file is important.
 
 ```
 "dropdowns.less": true
 ```
 
-It means that table styles will be included into output `bootstrap.less` and `bootstrap.css` files
+It means that table styles will be included into output `bootstrap.less` and `bootstrap.css` files.
 
 Include required components into your theme by changing `config.json`
 
 Define styles that are not defined in Bootstrap in `theme/less/theme.less`
 
-###Generate new color theme
+###Generate New Color Theme
 
 Go to `theme/less/variables.less` and set new values for required variables.
 
-Appsngen themes based on 5 variables:
+AppsNgen themes based on 5 variables:
 * `@gray-darker` - headers
 * `@gray-dark` - background
 * `@gray` - bars/buttons
 * `@gray-light` - secondary text/icons/dividers
 * `@gray-lighter` - text
-
-
 
 
 >For simple customization you can update values only for variables provided above.
