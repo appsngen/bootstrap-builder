@@ -54,27 +54,27 @@
         "buttons.less": true,
 
         // Components
-        "component-animations.less": true,
-        "dropdowns.less": true,
-        "button-groups.less": true,
-        "input-groups.less": true,
-        "navs.less": true,
-        "navbar.less": true,
-        "breadcrumbs.less": true,
-        "pagination.less": true,
-        "pager.less": true,
-        "labels.less": true,
-        "badges.less": true,
-        "jumbotron.less": true,
-        "thumbnails.less": true,
-        "alerts.less": true,
-        "progress-bars.less": true,
-        "media.less": true,
-        "list-group.less": true,
-        "panels.less": true,
-        "responsive-embed.less": true,
-        "wells.less": true,
-        "close.less": true,
+        "component-animations.less": false,
+        "dropdowns.less": true,     
+        "button-groups.less": false,
+        "input-groups.less": false,
+        "navs.less": false,     // required for widgets
+        "navbar.less": false,     // required for widgets
+        "breadcrumbs.less": false,
+        "pagination.less": false,
+        "pager.less": false,
+        "labels.less": false,
+        "badges.less": false,
+        "jumbotron.less": false,
+        "thumbnails.less": false,
+        "alerts.less": false,
+        "progress-bars.less": false,
+        "media.less": false,
+        "list-group.less": false,
+        "panels.less": false,
+        "responsive-embed.less": false,
+        "wells.less": false,
+        "close.less": false,     // required for widgets
 
         // Components JavaScript
         "modals.less": true,
@@ -86,12 +86,13 @@
         "utilities.less": true,
         "responsive-utilities.less": true
     },
-    "AppsNgenExtensions":{
-        "scrollable-table.less": true,
-        "scrollable-container.less": true,
-        "jquery-jscrollpane.less": true,
-        "waiting.less": true,
-        "errors.less": true
+    "AppsNgenExtensions": {
+        "scrollable-table.less": true,     // required for widgets
+        "scrollable-container.less": false,     // required for widgets
+        "jquery-jscrollpane.less": true,     // required for widgets
+        "waiting.less": true,     // required for widgets
+        "errors.less": true,                 // required for widgets
+        "quotes.less": true
     },
     "themePath": "theme/less/theme.less",
     "compress":false,
