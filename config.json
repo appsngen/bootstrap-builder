@@ -2,100 +2,99 @@
     "variablesPath": "theme/less/variables.less",
     "Mixins": {
         // Utilities
-        "hide-text.less": true,     // required for widgets
-        "opacity.less": true,     // required for widgets
-        "image.less": true,     // required for widgets
-        "labels.less": false,
-        "reset-filter.less": true,     // required for widgets
-        "resize.less": false,
-        "responsive-visibility.less": true,     // required for widgets
-        "size.less": false,
-        "tab-focus.less": true,     // required for widgets
-        "text-emphasis.less": true,     // required for widgets
-        "text-overflow.less": true,     // required for widgets
-        "vendor-prefixes.less": true,     // required for widgets
+        "hide-text.less": true,
+        "opacity.less": true,
+        "image.less": true,
+        "labels.less": true,
+        "reset-filter.less": true,
+        "resize.less": true,
+        "responsive-visibility.less": true,
+        "size.less": true,
+        "tab-focus.less": true,
+        "text-emphasis.less": true,
+        "text-overflow.less": true,
+        "vendor-prefixes.less": true,
 
         // Components
-        "alerts.less": false,
-        "buttons.less": true,     // required for widgets
-        "panels.less": false,
-        "pagination.less": false,
-        "list-group.less": false,
-        "nav-divider.less": true,     // required for widgets
-        "forms.less": true,     // required for widgets
-        "progress-bar.less": false,
-        "table-row.less": true,     // required for widgets
+        "alerts.less": true,
+        "buttons.less": true,
+        "panels.less": true,
+        "pagination.less": true,
+        "list-group.less": true,
+        "nav-divider.less": true,
+        "forms.less": true,
+        "progress-bar.less": true,
+        "table-row.less": true,
 
         // Skins
-        "background-variant.less": true,     // required for widgets
-        "border-radius.less": true,     // required for widgets
-        "gradients.less": false,
+        "background-variant.less": true,
+        "border-radius.less": true,
+        "gradients.less": true,
 
         // Layout
-        "clearfix.less": true,     // required for widgets
-        "center-block.less": true,     // required for widgets
-        "nav-vertical-align.less": true,     // required for widgets
-        "grid-framework.less": true,     // required for widgets
-        "grid.less": true                // required for widgets
+        "clearfix.less": true,
+        "center-block.less": true,
+        "nav-vertical-align.less": true,
+        "grid-framework.less": true,
+        "grid.less": true
     },
-    "Bootsrap": {
+    "Bootsrap":{
         // Reset and dependencies
-        "normalize.less": true,     // required for widgets
-        "print.less": false,
+        "normalize.less": true,
+        "print.less": true,
         "glyphicons.less": true,
 
         // Core CSS
-        "scaffolding.less": true,     // required for widgets
-        "type.less": true,     // required for widgets
-        "code.less": true,     // required for widgets
-        "grid.less": true,     // required for widgets
-        "tables.less": true,     // required for widgets
-        "forms.less": true,     // required for widgets
-        "buttons.less": true,     // required for widgets
+        "scaffolding.less": true,
+        "type.less": true,
+        "code.less": true,
+        "grid.less": true,
+        "tables.less": true,
+        "forms.less": true,
+        "buttons.less": true,
 
         // Components
-        "component-animations.less": false,
-        "dropdowns.less": true,     
-        "button-groups.less": false,
-        "input-groups.less": false,
-        "navs.less": false,     // required for widgets
-        "navbar.less": false,     // required for widgets
-        "breadcrumbs.less": false,
-        "pagination.less": false,
-        "pager.less": false,
-        "labels.less": false,
-        "badges.less": false,
-        "jumbotron.less": false,
-        "thumbnails.less": false,
-        "alerts.less": false,
-        "progress-bars.less": false,
-        "media.less": false,
-        "list-group.less": false,
-        "panels.less": false,
-        "responsive-embed.less": false,
-        "wells.less": false,
-        "close.less": false,     // required for widgets
+        "component-animations.less": true,
+        "dropdowns.less": true,
+        "button-groups.less": true,
+        "input-groups.less": true,
+        "navs.less": true,
+        "navbar.less": true,
+        "breadcrumbs.less": true,
+        "pagination.less": true,
+        "pager.less": true,
+        "labels.less": true,
+        "badges.less": true,
+        "jumbotron.less": true,
+        "thumbnails.less": true,
+        "alerts.less": true,
+        "progress-bars.less": true,
+        "media.less": true,
+        "list-group.less": true,
+        "panels.less": true,
+        "responsive-embed.less": true,
+        "wells.less": true,
+        "close.less": true,
 
         // Components JavaScript
-        "modals.less": false,
-        "tooltip.less": false,
-        "popovers.less": false,
-        "carousel.less": false,
+        "modals.less": true,
+        "tooltip.less": true,
+        "popovers.less": true,
+        "carousel.less": true,
 
         // Utility classes
-        "utilities.less": true,     // required for widgets
+        "utilities.less": true,
         "responsive-utilities.less": true
     },
-    "AppsNgenExtensions": {
-        "scrollable-table.less": true,     // required for widgets
-        "scrollable-container.less": false,     // required for widgets
-        "jquery-jscrollpane.less": true,     // required for widgets
-        "waiting.less": true,     // required for widgets
-        "errors.less": true,                 // required for widgets
-        "quotes.less": true
+    "AppsNgenExtensions":{
+        "scrollable-table.less": true,
+        "scrollable-container.less": true,
+        "jquery-jscrollpane.less": true,
+        "waiting.less": true,
+        "errors.less": true
     },
     "themePath": "theme/less/theme.less",
-    "compress": false,
+    "compress":false,
     "restServicesUrls": {
         "tokenService": {
             "host": "www.appsngen.com",
@@ -106,9 +105,9 @@
             "path": "/rest-services/preferences/global?view=general&organizationId="
         }
     },
-    "user": {
-        "password": "dev1",
-        "name": "dev1@epamsystems.com"
+    "user" : {
+        "password": "",
+        "name" : ""
     },
-    "organizationId": "urn:org:epam_systems"
+    "organizationId": ""
 }

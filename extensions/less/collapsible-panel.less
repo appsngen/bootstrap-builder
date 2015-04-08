@@ -1,0 +1,75 @@
+/* COLLAPSIBLE-PANEL COMPONENT */
+
+/* Variables */
+@collapsible-panel-background: @gray-darker;
+@collapsible-panel-border : lighten(@gray, 6%);
+@collapsible-panel-position-top: 50px;
+
+@collapsible-panel-media-breakpoint: 320px;
+
+/* Variables overlay */
+@collapsible-panel-overlay-opacity: 0.6;
+@collapsible-panel-overlay-background: @gray-darker;
+@collapsible-panel-overlay-z-index: 1;
+
+/* Style */
+.collapsible-panel-checkbox {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+.collapsible-panel-label {
+  display: none;
+  cursor: pointer;
+  -webkit-user-select: none; /* Chrome all / Safari all */
+  -moz-user-select: none; /* Firefox all */
+  -ms-user-select: none; /* IE 10+ */
+
+  /* No support for these yet, use at own risk */
+  -o-user-select: none;
+  user-select: none;
+}
+
+/* Overlay(optional element) */
+.collapsible-panel-overlay {
+  display: none;
+  width: 100%;
+  height: calc(~"100%" - @collapsible-panel-position-top);
+  background: @collapsible-panel-overlay-background;
+  position: absolute;
+  left: 0;
+  top: @collapsible-panel-position-top;
+  opacity: @collapsible-panel-overlay-opacity;
+  z-index: @collapsible-panel-overlay-z-index;
+}
+
+/* Media-Breakpoint */
+@media screen and (min-width: 0px) and (max-width: @collapsible-panel-media-breakpoint) {
+  .collapsible-panel-label {
+    display: block;
+  }
+
+  .collapsible-panel {
+    width: 100%;
+    display: none;
+    position: absolute;
+    left: 0;
+    top: @collapsible-panel-position-top;
+    z-index: @collapsible-panel-overlay-z-index + 1;
+    background: @collapsible-panel-background;
+    .collapsible-content {
+      margin: 5px;
+      background: @collapsible-panel-background;
+      border: 1px solid @collapsible-panel-border;
+    }
+  }
+
+  .collapsible-panel-checkbox:checked ~ .collapsible-panel {
+    display: block;
+  }
+
+  .collapsible-panel-checkbox:checked ~ .collapsible-panel-overlay {
+    display: block;
+  }
+}
