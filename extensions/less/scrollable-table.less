@@ -129,9 +129,11 @@
       vertical-align: top;
       overflow: hidden;
     }
-
+    .scroll-cell {
+      width: 80%;
+    }
     .fixed-cell {
-      width: 11%;
+      width: 105px;
       border-right: 1px solid @table-border-color;
 
       .jspPane {
@@ -147,6 +149,22 @@
   .scroll-cell > div, .fixed-cell > div {
     height: 100%;
     overflow: hidden;
+  }
+
+  .no-border-bottom {
+    border-bottom: none !important;
+  }
+
+  .no-border-top {
+    border-top: none !important;
+  }
+
+  .no-border-right {
+    border-right: none !important;
+  }
+
+  .no-border-left {
+    border-left: none !important;
   }
 
   @media screen and (min-width: 0px) and (max-width: 679px) {
