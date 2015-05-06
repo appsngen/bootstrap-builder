@@ -65,10 +65,17 @@
     }
   }
 
+  .collapsible-panel-checkbox:checked ~ * .collapsible-panel,
   .collapsible-panel-checkbox:checked ~ .collapsible-panel {
     display: block;
   }
 
+  .collapsible-panel-checkbox:checked ~ * .collapsible-panel-label,
+  .collapsible-panel-checkbox:checked ~ .collapsible-panel-label{
+    color: @navbar-default-link-hover-color;
+  }
+
+  .collapsible-panel-checkbox:checked ~ * .collapsible-panel-overlay,
   .collapsible-panel-checkbox:checked ~ .collapsible-panel-overlay {
     display: block;
   }
