@@ -60,15 +60,35 @@
         return result
     };
 
+    var formingComponentsList = function (inputObj) {
+        var resultString = '/*\n\n',
+            bootstrap,
+            extensions;
+
+        bootstrap = JSON.stringify(inputObj.bootsrapConfig);
+        bootstrap = bootstrap.replace(/[,]/g, ',\n\t');
+        resultString += '"Bootstrap":' + bootstrap + '\n\n';
+
+        extensions = JSON.stringify(inputObj.appsNgenExtensionsConfig);
+        extensions = extensions.replace(/[,]/g, ',\n\t');
+
+        resultString += '"AppsNgenExtentions":' + extensions;
+        resultString = resultString.replace(/[{]/g, ' {\n\t').replace(/[}]/g, '\n}');
+        resultString += '\n\n*/\n\n';
+
+        return resultString;
+    };
+
     var config = readConfig();
 
+    var componentsList = formingComponentsList(config);
     var variables = readFile(config.variablesPath);
     var mixinFiles = includeFiles(config.mixinsConfig, mixinsRoot);
     var bootstrapFiles = includeFiles(config.bootsrapConfig, bootstrapRoot);
     var extensionsFiles = includeFiles(config.appsNgenExtensionsConfig, extensionsRoot);
     var theme = readFile(config.themePath);
 
-    var resultLess = variables + mixinFiles + bootstrapFiles + extensionsFiles + theme;
+    var resultLess = componentsList + variables + mixinFiles + bootstrapFiles + extensionsFiles + theme;
 
 
     var parser = new (less.Parser)({});
