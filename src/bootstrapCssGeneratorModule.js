@@ -32,7 +32,7 @@
 
         result.variablesPath = obj.variablesPath;
         result.mixinsConfig = obj.Mixins;
-        result.bootsrapConfig = obj.Bootsrap;
+        result.bootsrapConfig = obj.Bootstrap;
         result.appsNgenExtensionsConfig = obj.AppsNgenExtensions;
         result.themePath = obj.themePath;
         result.compressResults = obj.compress;
@@ -72,7 +72,7 @@
         extensions = JSON.stringify(inputObj.appsNgenExtensionsConfig);
         extensions = extensions.replace(/[,]/g, ',\n\t');
 
-        resultString += '"AppsNgenExtentions":' + extensions;
+        resultString += '"AppsNgenExtensions":' + extensions;
         resultString = resultString.replace(/[{]/g, ' {\n\t').replace(/[}]/g, '\n}');
         resultString += '\n\n*/\n\n';
 
