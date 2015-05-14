@@ -60,7 +60,7 @@
         return result
     };
 
-    var formingComponentsList = function (inputObj) {
+    var formComponentsList = function (inputObj) {
         var resultString = '/*\n\n',
             bootstrap,
             extensions;
@@ -81,7 +81,7 @@
 
     var config = readConfig();
 
-    var componentsList = formingComponentsList(config);
+    var componentsList = formComponentsList(config);
     var variables = readFile(config.variablesPath);
     var mixinFiles = includeFiles(config.mixinsConfig, mixinsRoot);
     var bootstrapFiles = includeFiles(config.bootsrapConfig, bootstrapRoot);
