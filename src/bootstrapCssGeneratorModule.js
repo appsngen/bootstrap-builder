@@ -73,7 +73,7 @@
         extensions = extensions.replace(/[,]/g, ',\n\t');
 
         resultString += '"AppsNgenExtensions":' + extensions;
-        resultString = resultString.replace(/[{]/g, ' {\n\t').replace(/[}]/g, '\n}');
+        resultString = resultString.replace(/[{]/g, ' {\n\t').replace(/[}]/g, '\n},');
         resultString += '\n\n*/\n\n';
 
         return resultString;
