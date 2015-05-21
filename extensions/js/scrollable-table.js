@@ -46,8 +46,8 @@
         this.version = '0.0.7';
         this.settings = {
             mouseWheelSpeed: 30,
-            horizontalGutter: -8,
-            verticalGutter: -8
+            horizontalGutter: 1,
+            verticalGutter: 1
         };
         $.extend(this.settings, jspOptionsObj);
 
