@@ -38,64 +38,56 @@
         "grid-framework.less": true,
         "grid.less": true
     },
-    "Bootsrap":{
-        // Reset and dependencies
-        "normalize.less": true,
-        "print.less": true,
-        "glyphicons.less": true,
+"Bootstrap": {
+    "normalize.less":true,
+    "print.less":true,
+    "glyphicons.less":true,
+    "scaffolding.less":true,
+    "type.less":true,
+    "code.less":true,
+    "grid.less":true,
+    "tables.less":true,
+    "forms.less":true,
+    "buttons.less":true,
+    "component-animations.less":true,
+    "dropdowns.less":true,
+    "button-groups.less":true,
+    "input-groups.less":true,
+    "navs.less":true,
+    "navbar.less":true,
+    "breadcrumbs.less":true,
+    "pagination.less":true,
+    "pager.less":true,
+    "labels.less":true,
+    "badges.less":true,
+    "jumbotron.less":true,
+    "thumbnails.less":true,
+    "alerts.less":true,
+    "progress-bars.less":true,
+    "media.less":true,
+    "list-group.less":true,
+    "panels.less":true,
+    "responsive-embed.less":true,
+    "wells.less":true,
+    "close.less":true,
+    "modals.less":true,
+    "tooltip.less":true,
+    "popovers.less":true,
+    "carousel.less":true,
+    "utilities.less":true,
+    "responsive-utilities.less":true
+},
 
-        // Core CSS
-        "scaffolding.less": true,
-        "type.less": true,
-        "code.less": true,
-        "grid.less": true,
-        "tables.less": true,
-        "forms.less": true,
-        "buttons.less": true,
-
-        // Components
-        "component-animations.less": false,
-        "dropdowns.less": true,     
-        "button-groups.less": false,
-        "input-groups.less": true,
-        "navs.less": true,     // required for widgets
-        "navbar.less": true,     // required for widgets
-        "breadcrumbs.less": false,
-        "pagination.less": false,
-        "pager.less": false,
-        "labels.less": false,
-        "badges.less": false,
-        "jumbotron.less": false,
-        "thumbnails.less": false,
-        "alerts.less": false,
-        "progress-bars.less": false,
-        "media.less": false,
-        "list-group.less": false,
-        "panels.less": false,
-        "responsive-embed.less": false,
-        "wells.less": false,
-        "close.less": true,     // required for widgets
-
-        // Components JavaScript
-        "modals.less": true,
-        "tooltip.less": true,
-        "popovers.less": true,
-        "carousel.less": true,
-
-        // Utility classes
-        "utilities.less": true,
-        "responsive-utilities.less": true
-    },
-    "AppsNgenExtensions": {
-        "scrollable-table.less": true,       // required for widgets
-        "scrollable-container.less": false,  // required for widgets
-        "jquery-jscrollpane.less": true,     // required for widgets
-        "waiting.less": true,                // required for widgets
-        "errors.less": true,                 // required for widgets
-        "quotes.less": true,                 // required for widgets
-        "collapsible-panel.less": false,      // required for widgets
-        "dropdown-extension.less": false      // required for widgets
-    },
+"AppsNgenExtensions": {
+    "scrollable-table.less":true,
+    "scrollable-container.less":true,
+    "jquery-jscrollpane.less":true,
+    "waiting.less":true,
+    "errors.less":true,
+    "quotes.less":true,
+    "collapsible-panel.less":true,
+    "dropdown-extension.less":true
+},
     "themePath": "theme/less/theme.less",
     "compress":false,
     "restServicesUrls": {
