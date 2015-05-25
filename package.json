@@ -1,7 +1,7 @@
 {
     "name": "bootstrap-builder",
     "description": "Tool for custom bootstrap assemblies with LESS output in addition to CSS",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "license": "MIT",
     "repository": {
         "type": "git",
