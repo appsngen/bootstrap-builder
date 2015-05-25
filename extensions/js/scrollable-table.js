@@ -1,4 +1,7 @@
 /**
+ * version 0.0.8
+ * fix bug with refresh(true) and scrolling to left
+ *
  * version 0.0.7
  * added footer
  * fixed adding margins when scroll panel is visible
@@ -43,7 +46,7 @@
      */
     var ScrollableTable = function (container, jspOptionsObj) {
         var that = this, isFixedColumn;
-        this.version = '0.0.7';
+        this.version = '0.0.8';
         this.settings = {
             mouseWheelSpeed: 30,
             horizontalGutter: 1,
@@ -283,17 +286,22 @@
      */
     ScrollableTable.prototype.refresh = function (reset) {
         this.setBodyHeight();
-        var api = [];
-        api.push(this.scroll.jspApi);
-        if (this.fixed) {
-            api.push(this.fixed.jspApi);
+        var apis = [];
+
+        if (reset) {
+            this.scrollToX(0);
+            this.scrollToY(0);
         }
-        api.forEach(function (api) {
-            if (reset) {
-                api.scrollTo(0, 0);
-            }
+
+        apis.push(this.scroll.jspApi);
+        if (this.fixed) {
+            apis.push(this.fixed.jspApi);
+        }
+
+        apis.forEach(function (api) {
             api.reinitialise();
         });
+
         return this;
     };
 
@@ -304,7 +312,9 @@
     ScrollableTable.prototype.scrollToX = function (x) {
         if (this.isScrollX) {
             this.scroll.jspApi.scrollToX(x);
+
             this.scroll.container.$header.scrollLeft(x);
+            this.scroll.container.$footer.scrollLeft(x);
         }
         return this;
     };
