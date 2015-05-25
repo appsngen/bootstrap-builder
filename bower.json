@@ -1,0 +1,21 @@
+{
+    "name": "appsngen-bootstrap",
+    "description": "bootstrap less files builder for AppsNgen widgets",
+    "version":"0.1.0",
+    "main": [
+        "dist/bootstrap-styles.less",
+        "extensions/js/dropdown.ext.js",
+        "extensions/js/scrollable-container.js",
+        "extensions/js/scrollable-table.js"
+    ],
+    "keywords": ["appsngen", "bootstrap"],
+    "authors": [{
+        "name": "appsngen",
+        "email": "developers@appsngen.com",
+        "url": "https://www.appsngen.com"
+    }],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/appsngen/bootstrap-builder.git"
+    }
+}
