@@ -1,10 +1,6 @@
-/*
- * typehead.js-bootstrap3.less
- * @version 0.2.3
- * https://github.com/hyspace/typeahead.js-bootstrap3.less
- *
- * Licensed under the MIT license:
- * http://www.opensource.org/licenses/MIT
+/* 0.1.0 update items templates and styles for them
+ * 0.0.0 version based on
+ * typehead.js-bootstrap3.less version 0.2.3
  */
 
 .typeahead-form-control(@border-color: #ccc;) {
@@ -93,14 +89,12 @@
   }
 }
 
-.tt-dropdown-menu {
-
+.tt-dropdown-menu, .tt-menu {
   position: absolute;
   top: 100%;
-  left: 0;
+  left: -30px !important;
   z-index: @zindex-dropdown;
-  min-width: 160px;
-  width: 100%;
+  width: 298px;
   padding: 5px 0;
   margin: 2px 0 0;
   list-style: none;
@@ -108,36 +102,28 @@
   background-color: @dropdown-bg;
   border: 1px solid @dropdown-border;
   border-radius: @border-radius-base;
-  .box-shadow(0 6px 12px rgba(0,0,0,.175));
   background-clip: padding-box;
-  *border-right-width: 2px;
-  *border-bottom-width: 2px;
+}
 
-  .tt-suggestion {
+.typeahead-search-item {
+  display: block;
+  padding: 3px 20px;
+  line-height: @line-height-base;
+  color: @dropdown-link-color;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
 
-    display: block;
-    padding: 3px 20px;
-    clear: both;
-    font-weight: normal;
-    line-height: @line-height-base;
-    color: @dropdown-link-color;
-    white-space: nowrap;
-
-    &.tt-cursor {
-
-      text-decoration: none;
-      outline: 0;
-      background-color: @dropdown-link-hover-bg;
-      color: @dropdown-link-hover-color;
-      a {
-
-        color: @dropdown-link-hover-color;
-      }
-    }
-    p {
-      margin: 0;
-    }
+.tt-suggestion {
+  &:hover {
+    background: @dropdown-link-hover-bg;
   }
+}
+
+.typeahead-search-empty-item {
+  cursor: default;
 }
 
 /* TYPEAHEAD-SEARCH */
@@ -220,47 +206,5 @@ input::-ms-clear {
     -moz-transition: right 1s ease; /* Firefox all */
     -o-transition: right 1s ease; /* Opera all */
     transition: right 1s ease;
-  }
-}
-
-/* FIX typeahead for new version */
-
-.tt-menu {
-  &:extend(.tt-dropdown-menu);
-}
-
-.tt-menu .tt-suggestion > p {
-  margin: 0;
-}
-
-.tt-suggestion > p {
-  &:extend(.dropdown-menu > li > a);
-  &:hover,
-  &:focus {
-    &:extend(.dropdown-menu > .active > a);
-  }
-}
-
-.tt-suggestion * {
-  text-decoration: none !important;
-}
-
-.twitter-typeahead-empty-item {
-  display: block;
-  padding: 3px 20px;
-  clear: both;
-  font-weight: normal;
-  line-height: @line-height-base;
-  color: @dropdown-link-color;
-  white-space: nowrap;
-
-  p {
-    margin: 0;
-
-    a {
-      color: @dropdown-link-hover-color;
-      text-decoration: none;
-      cursor: default;
-    }
   }
 }
