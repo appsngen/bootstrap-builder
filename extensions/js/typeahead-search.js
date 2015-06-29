@@ -14,6 +14,7 @@
 
         this.$container = $container;
         this.$searchInput = $searchInput;
+        this.version = '0.1.0';
         this.$searchInput.typeahead(
             typeaheadOptions,
             typeaheadDataset
