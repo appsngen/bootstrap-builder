@@ -9,17 +9,20 @@
         configName = "config.json",
 
         bootstrapRoot = 'node_modules/bootstrap/less/',
+        bootstrapJsRoot = 'node_modules/bootstrap/js/',
         mixinsRoot = 'node_modules/bootstrap/less/mixins/',
         extensionsRoot = 'extensions/less/',
+        extensionJsRoot = 'extensions/js/',
 
         destinationPathCss = "dist/bootstrap-styles.css",
-        destinationPathLess = "dist/bootstrap-styles.less";
+        destinationPathLess = "dist/bootstrap-styles.less",
+        destinationPathJs = 'dist/js/';
 
     var readFile = function (fileName) {
         var fileContent = '';
-        try{
+        try {
             fileContent = fs.readFileSync(fileName);
-        }catch(e){
+        } catch (e) {
             console.log(e);
         }
         return fileContent.toString();
@@ -40,14 +43,13 @@
         return result;
     };
 
-    var includeFiles = function(config, root){
+    var includeFiles = function (config, root) {
         var fileContent,
             filePath,
             result = "";
 
-        for(var property in config){
-            if (config[property] === true)
-            {
+        for (var property in config) {
+            if (config[property] === true) {
                 //include file
                 filePath = root + '/' + property;
                 console.log("Include: " + filePath);
@@ -79,6 +81,57 @@
         return resultString;
     };
 
+    var makeValidObjectForCopyJs = function (config) {
+        var stringObject = JSON.stringify(config).replace(/.less/g, '.js'),
+            resultObject = JSON.parse(stringObject);
+
+        return resultObject;
+    };
+
+    var copyFile = function (fileName, targetPath, sourcePath) {
+        var target = targetPath + fileName;
+        var fileContent = readFile(sourcePath + fileName);
+        fs.writeFile(target, fileContent, function (err) {
+            if (err) {
+                throw err;
+            }
+            console.log('----------------------------------');
+            console.log('Created ' + target);
+        })
+    };
+
+    var copyNecessaryJs = function (config, targetPath, sourcePath) {
+        fs.readdir(sourcePath, function (error, files) {
+            if (error) {
+                throw error;
+            } else {
+                for (var property in config) {
+                    if (config[property] === true) {
+                        for (var j = 0; j < files.length; j++) {
+                            if (files[j] === property) {
+                                copyFile(property, targetPath, sourcePath);
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    };
+
+    var deleteFolderRecursive = function(path) {
+        if(fs.existsSync(path)) {
+            fs.readdirSync(path).forEach(function(file){
+                var currentPath = path + "/" + file;
+                if(fs.lstatSync(currentPath).isDirectory()) {
+                    deleteFolderRecursive(currentPath);
+                } else {
+                    fs.unlinkSync(currentPath);
+                }
+            });
+            fs.rmdirSync(path);
+        }
+    };
+
     var config = readConfig();
 
     var componentsList = formComponentsList(config);
@@ -90,19 +143,24 @@
 
     var resultLess = componentsList + variables + mixinFiles + bootstrapFiles + extensionsFiles + theme;
 
+    var bootstrapJs = makeValidObjectForCopyJs(config.bootsrapConfig),
+        extensionJs = makeValidObjectForCopyJs(config.appsNgenExtensionsConfig);
 
     var parser = new (less.Parser)({});
+
+    deleteFolderRecursive('dist');
+
     parser.parse(resultLess, function (e, tree) {
-        tree.toCSS({ compress: config.compressResults });
+        tree.toCSS({compress: config.compressResults});
         try {
             var css = tree.toCSS({
                 compress: config.compressResults
             });
+
             mkdirp('dist', function (error) {
                 if (error) {
                     throw error;
-                }
-                else {
+                } else {
                     fs.writeFile(destinationPathCss, css, function (err) {
                         if (err) {
                             throw err;
@@ -122,6 +180,16 @@
         }
         catch (exception) {
             console.log(exception);
+        }
+    });
+
+    /* copy necessary js files */
+    mkdirp('dist/js', function (error) {
+        if (error) {
+            throw error;
+        } else {
+            copyNecessaryJs(bootstrapJs, destinationPathJs, bootstrapJsRoot);
+            copyNecessaryJs(extensionJs, destinationPathJs, extensionJsRoot);
         }
     });
 }());
