@@ -80,7 +80,7 @@
         setSelectedItem($btn, $menu, $item);
     };
 
-    function onDropdownClick(e) {
+    function onDropdownClick() {
         var $menuItem = $(this); //jshint ignore:line
         var $menu = $menuItem.parent();
         var $input = $menu.find('input');
