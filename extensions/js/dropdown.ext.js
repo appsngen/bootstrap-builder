@@ -8,6 +8,16 @@
         var self = this;
         this.element = $(element);
 
+
+        this.element.parent().on('shown.bs.dropdown', function (e) {
+            var items = $(e.target).find('li').not('.filtered-input'),
+                itemsLength = items.length;
+
+            if(itemsLength === 0) {
+                $(e.target).find('span.empty-result').css('display', 'block');
+            }
+        });
+
         this.element.on('click.bs.dropdown', function (e) {
             self.toggle.call(this, e);
             e.stopPropagation();
@@ -70,7 +80,7 @@
         setSelectedItem($btn, $menu, $item);
     };
 
-    function onDropdownClick() {
+    function onDropdownClick(e) {
         var $menuItem = $(this); //jshint ignore:line
         var $menu = $menuItem.parent();
         var $input = $menu.find('input');
@@ -82,25 +92,35 @@
     }
 
     function getItems(e) {
-        return $(e.target).parent().siblings('[role=\'presentation\']');
+        //all "li" elements except "li.filtered-input"
+        return $(e.target).parent().parent().find('li').not('.filtered-input');
     }
 
     function filterItems(e, queryString) {
         var items = getItems(e),
             itemsLength = items.length,
+            emptyResultText = $(e.target).parent().find('span.empty-result'),
             currentItem,
             currentItemText = '',
-            stringLength = queryString.length,
+            haveDisplayedItems = false,
             i;
 
-        for(i = 0; i < itemsLength; i++) {
-            currentItem = $(items.get(i));
-            currentItemText = currentItem.find('a').text().slice(0, stringLength).toUpperCase();
+        queryString = $.trim(queryString);
 
-            if(currentItemText === queryString) {
+        for (i = 0; i < itemsLength; i++) {
+            currentItem = $(items.get(i));
+            currentItemText = currentItem.find('a').text().toUpperCase();
+
+            if (currentItemText.indexOf(queryString) >= 0) {
                 currentItem.attr('data-filtered', 'true');
+                haveDisplayedItems = true;
             } else {
                 currentItem.attr('data-filtered', 'false');
+            }
+            if(haveDisplayedItems) {
+                emptyResultText.css('display', 'none');
+            } else {
+                emptyResultText.css('display', 'block');
             }
         }
     }
@@ -140,5 +160,4 @@
     $(document).on('click.bs.dropdown.data-api', '.dropdown-menu .filtered-input', onInputClick);
     $(document).on('click.bs.dropdown.data-api', '.dropdown-menu input', onInputClick);
     $(document).on('keyup.bs.dropdown.data-api', '.dropdown-menu input', onInputKeyup);
-
 }());
