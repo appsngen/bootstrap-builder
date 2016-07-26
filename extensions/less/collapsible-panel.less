@@ -48,6 +48,10 @@
 @media screen and (min-width: 0px) and (max-width: @collapsible-panel-media-breakpoint) {
   .collapsible-panel-label {
     display: block;
+
+    &.opened {
+      color: @navbar-default-link-hover-color;
+    }
   }
 
   .collapsible-panel {
@@ -63,20 +67,5 @@
       background: @collapsible-panel-background;
       border: 1px solid @collapsible-panel-border;
     }
-  }
-
-  .collapsible-panel-checkbox:checked ~ * .collapsible-panel,
-  .collapsible-panel-checkbox:checked ~ .collapsible-panel {
-    display: block;
-  }
-
-  .collapsible-panel-checkbox:checked ~ * .collapsible-panel-label,
-  .collapsible-panel-checkbox:checked ~ .collapsible-panel-label{
-    color: @navbar-default-link-hover-color;
-  }
-
-  .collapsible-panel-checkbox:checked ~ * .collapsible-panel-overlay,
-  .collapsible-panel-checkbox:checked ~ .collapsible-panel-overlay {
-    display: block;
   }
 }
